@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th=http://www.thymeleaf.org>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html xmlns:th=http://www.thymeleaf.org>
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Thymeleaf</title>
 </head>
 <body>
 Thymeleaf测试页面
-
 <!--/*@thymesVar id="value" type="java.lang.String"*/-->
-<p th:value="${value}">
+<p th:text="${value}">
     value的值
 </p>
+<div  th:unless="${#lists.isEmpty(foods)}">
+    <ul>
+        <li th:each="food:${foods}" th:text="${food.fName}">
+        </li>
+    </ul>
+</div>
 </body>
 </html>
