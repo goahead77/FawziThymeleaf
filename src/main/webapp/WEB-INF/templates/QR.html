@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head>
+    <meta charset="UTF-8">
+    <title>QR</title>
+</head>
+<body>
+<form action="" th:action="@{/qr/decoder}" enctype="multipart/form-data" method="post">
+    <input type="file" name="image"/>
+    <input type="submit" value="上传" />
+</form>
+
+<!--/*@thymesVar id="result" type="java.lang.String"*/-->
+<p th:text="${result}">此处是分析结果</p>
+</body>
+</html>
