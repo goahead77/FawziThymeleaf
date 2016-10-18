@@ -9,13 +9,11 @@ import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.multi.GenericMultipleBarcodeReader;
 import com.google.zxing.multi.MultipleBarcodeReader;
 import com.google.zxing.qrcode.QRCodeWriter;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
@@ -23,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -43,12 +40,13 @@ public class QRCoderController {
         HINTS.put(DecodeHintType.POSSIBLE_FORMATS, EnumSet.allOf(BarcodeFormat.class));
         HINTS_PURE = new EnumMap<>(HINTS);
         HINTS_PURE.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
+        HINTS.put(DecodeHintType.CHARACTER_SET,"utf-8");
     }
 
     @RequestMapping("/create")
-    public void createQRImage(HttpServletResponse response) throws WriterException, IOException {
+    public void createQRImage(HttpServletResponse response,String word) throws WriterException, IOException {
         BitMatrix bitMatrix;
-        bitMatrix=new QRCodeWriter().encode("xxx", BarcodeFormat.QR_CODE,200,300);
+        bitMatrix=new QRCodeWriter().encode(word, BarcodeFormat.QR_CODE,200,300);
         ByteArrayOutputStream pngOut = new ByteArrayOutputStream();
         MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOut);
         byte[] pngData = pngOut.toByteArray();

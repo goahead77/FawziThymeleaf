@@ -5,6 +5,11 @@
     <title>QR</title>
 </head>
 <body>
+
+<form action="QR.html" th:action="@{/qr/create}" method="POST">
+    请输入文字：<input name="word"> <input type="submit" value="提交" />
+</form>
+
 <form action="" th:action="@{/qr/decoder}" enctype="multipart/form-data" method="post">
     <input type="file" name="image"/>
     <input type="submit" value="上传" />
