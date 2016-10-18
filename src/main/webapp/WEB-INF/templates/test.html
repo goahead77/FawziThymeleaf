@@ -4,6 +4,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Thymeleaf</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../css/font.css" data-th-href="@{/css/font.css}" />
 </head>
 <body>
 Thymeleaf测试页面
@@ -11,11 +13,13 @@ Thymeleaf测试页面
 <p th:text="${value}">
     value的值
 </p>
-<div  th:unless="${#lists.isEmpty(foods)}">
+<div  th:unless="${#lists.isEmpty(foods)}" class="bold">
     <ul>
-        <li th:each="food:${foods}" th:text="${food.fName}">
-        </li>
+        <li th:each="food:${foods}" th:text="${food.fName}+' '+|${food.Fry}?'油炸':'非油炸'| ">洞子火锅</li>
     </ul>
 </div>
+
+<hr />
+<p th:text="#{home.welcome}">适配本国 问候语</p>
 </body>
 </html>

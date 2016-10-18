@@ -25,6 +25,10 @@ public class TestController {
             Foods f=new Foods();
             f.setFId(i);
             f.setFName("食物"+i);
+            if(i%2==0)
+                f.setFry(true);
+            else
+                f.setFry(false);
             foodses.add(f);
         }
         model.addAttribute("value", UUID.randomUUID().toString());
