@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.*;
 
 /**
+ * <p>链接地址：https://github.com/zxing/zxing</p>
  * @author wenqi
  */
 
@@ -46,7 +47,8 @@ public class QRCoderController {
     @RequestMapping("/create")
     public void createQRImage(HttpServletResponse response,String word) throws WriterException, IOException {
         BitMatrix bitMatrix;
-        bitMatrix=new QRCodeWriter().encode(word, BarcodeFormat.QR_CODE,200,300);
+        String trans=new String(word.getBytes("UTF-8"),"ISO-8859-1");
+        bitMatrix=new QRCodeWriter().encode(trans, BarcodeFormat.QR_CODE,200,300);
         ByteArrayOutputStream pngOut = new ByteArrayOutputStream();
         MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOut);
         byte[] pngData = pngOut.toByteArray();
@@ -132,6 +134,7 @@ public class QRCoderController {
                 sb.append(result.getText());
                 sb.append('\n');
             }
+
         model.addAttribute("result",sb.toString());
         return "QR";
     }
