@@ -13,11 +13,15 @@ Thymeleaf测试页面
 <p th:text="${value}">
     value的值
 </p>
+<!--/*  */-->
 <div  th:unless="${#lists.isEmpty(foods)}" class="bold">
     <ul>
         <li th:each="food,index:${foods}" th:class="${index.odd}?'odd'"><span th:text="${food.fName}">
         </span><span th:text="${food.Fry}?'油炸':'非油炸'"></span>&nbsp;<a href="test.html" th:href="@{/food/foodDetail(fid=${food.fId})}">详情</a>
         </li>
+        <li th:remove="all">饺子</li>
+        <li th:remove="all">包子</li>
+        <li th:remove="all">馒头</li>
     </ul>
 </div>
 
@@ -36,7 +40,9 @@ Thymeleaf测试页面
 <hr/>
 <!--Fragments：-->
 <div th:replace="~{footer :: thanks(${session.user},${address},${{time}})}"></div>
-<!--<div th:replace="~{footer :: thanks}" th:with="who=${session.user},where=${address},when=${{time}}"></div>-->
+<div th:with="who=${session.user},where=${address},when=${{time}}">
+    <p th:replace="~{footer :: thanks(${who},${where},${when})}"></p>
+</div>
 <div th:include="~{footer :: #thank}"></div>
 <!--<div th:with="frag=~{footer :: #main/text()}">-->
     <!--<p th:insert="${frag}">-->
@@ -47,5 +53,9 @@ Thymeleaf测试页面
 
 <div th:insert="::test(who=${session.user},where=${address},when=${{time}})"></div>
 <div th:insert="::test" th:with="who=${session.user},where=${address},when=${{time}}"></div>
+
+<!--/*/
+<div th:text="${selectFood.fName}"></div>
+/*/-->
 </body>
 </html>
