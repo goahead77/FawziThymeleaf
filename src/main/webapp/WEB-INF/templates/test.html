@@ -15,11 +15,12 @@ Thymeleaf测试页面
 </p>
 <div  th:unless="${#lists.isEmpty(foods)}" class="bold">
     <ul>
-        <li th:each="food:${foods}"><span th:text="${food.fName}">方便面</span>属于<span th:text="${food.Fry}?'油炸食品':'非油炸食品'">油炸食品</span></li>
+        <li th:each="food:${foods}"><span th:text="${food.fName}"></span><span th:text="${food.Fry}?'油炸':'非油炸'"></span></li>
     </ul>
 </div>
 
 <hr />
 <p th:text="#{home.welcome(${session.user})}">适配本国 问候语</p>
+<p th:utext="#{${home_welcome}(${session.user})}"></p><!-- message -->
 </body>
 </html>

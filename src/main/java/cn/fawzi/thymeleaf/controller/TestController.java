@@ -33,6 +33,8 @@ public class TestController {
                 f.setFry(false);
             foodses.add(f);
         }
+        session.setAttribute("user","fawzi");
+        model.addAttribute("home_welcome","home.welcome");
         model.addAttribute("value", UUID.randomUUID().toString());
         model.addAttribute("foods", foodses);
         session.setAttribute("user","fawzi");
