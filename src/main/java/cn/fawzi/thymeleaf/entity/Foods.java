@@ -23,6 +23,7 @@ public class Foods {
 
     /**
      * 是否 油炸食品
+     * <i>注意：如果命名是isXX,则在html中应该写th:XXX ，去掉is，第二个单词首字母大写就可以</i>
      */
     private boolean isFry;
 
