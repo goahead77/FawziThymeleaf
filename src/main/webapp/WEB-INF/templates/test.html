@@ -15,12 +15,25 @@ Thymeleaf测试页面
 </p>
 <div  th:unless="${#lists.isEmpty(foods)}" class="bold">
     <ul>
-        <li th:each="food:${foods}"><span th:text="${food.fName}"></span><span th:text="${food.Fry}?'油炸':'非油炸'"></span></li>
+        <li th:each="food:${foods}"><span th:text="${food.fName}">
+        </span><span th:text="${food.Fry}?'油炸':'非油炸'"></span>&nbsp;<a href="test.html" th:href="@{/food/foodDetail(fid=${food.fId})}">详情</a>
+        </li>
     </ul>
 </div>
 
 <hr />
-<p th:text="#{home.welcome(${session.user})}">适配本国 问候语</p>
-<p th:utext="#{${home_welcome}(${session.user})}"></p><!-- message -->
+<p th:text="#{home.welcome(${session.user})}">适配本国 问候语</p><!--在message中，用占位符{0[...n]}表示-->
+<p th:utext="#{${home_welcome}(${sex})}"></p><!-- message 可以是从内置对象中取得的 -->
+<hr/>
+<p th:text="${#request.getAttribute('sex')}"></p>
+<p th:text="${#calendars.format(calendar,'yyyy-MM-dd')}"></p>
+<hr />
+<div th:object="${selectFood}">
+    <p th:text="*{fId}">1111</p>
+    <p th:text="*{fName}">洞子火锅</p>
+    <p th:text="*{Fry}">true</p>
+</div>
+<hr/>
+
 </body>
 </html>

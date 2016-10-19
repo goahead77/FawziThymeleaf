@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html xmlns:th=http://www.thymeleaf.org>
+<head>
+    <meta charset="UTF-8">
+    <title>食物详情</title>
+</head>
+<body>
+<div th:object="${selectFood}">
+    <a th:href="@{${url}(fid=*{fId},fType='LLL')}" th:text="*{fName}"></a>
+    <p th:text="*{fId}">1111</p>
+    <p th:text="*{fName}">洞子火锅</p>
+    <p th:text="*{Fry}">true</p>
+    <a th:href="@{'/food/'+${function}(fid=*{fId})}" th:text="${selectFood.fId}"></a>
+</div>
+</body>
+</html>
