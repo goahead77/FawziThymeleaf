@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head th:fragment="head(title,link)">
+    <link rel="stylesheet" type="text/css" media="all"
+           href="../css/font.css" data-th-href="@{/css/font.css}" />
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <th:block th:replace="${link}" />
+</head>
+<body>
+</body>
+</html>

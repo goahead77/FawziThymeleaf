@@ -2,3 +2,9 @@
     color: aqua;
     text-decoration: dotted;
 }
+.odd{
+    background-color: blanchedalmond;
+}
+.even{
+    background-color: aliceblue;
+}

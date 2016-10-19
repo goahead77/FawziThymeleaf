@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="thanks(who,where,when)">
+     <p th:text="|${who} 在 ${where} ${when} 访问此页面。|"></p>
+</div>
+<div id="thank">
+    感谢！
+</div>
+</body>
+</html>

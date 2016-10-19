@@ -35,6 +35,9 @@ public class TestController {
         request.setAttribute("sex","男");
         request.setAttribute("selectFood",foodses.get(0));
         Calendar calendar=Calendar.getInstance();
+        String address=request.getRemoteAddr();
+        request.setAttribute("address",address);
+        request.setAttribute("time",new Date());
         request.setAttribute("calendar",calendar);
         return "test";
     }
