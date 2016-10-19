@@ -63,6 +63,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setContentType("text/html; charset=UTF-8");
         viewResolver.setOrder(1);
+        viewResolver.setCache(false);
 //        viewResolver.setViewNames(new String[] {".html", ".xhtml","test.*"});
         return viewResolver;
     }

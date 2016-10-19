@@ -11,7 +11,12 @@
     <p th:text="*{fId}">1111</p>
     <p th:text="*{fName}">洞子火锅</p>
     <p th:text="*{Fry}">true</p>
-    <a th:href="@{'/food/'+${function}(fid=*{fId})}" th:text="${selectFood.fId}"></a>
+    <p th:if="${selectFood.isFried()}==false"><span>这里的内容被显示</span><span th:text="${selectFood.isFried()}"></span></p>
+    <a th:href="@{'~/food/'+${function}(fid=*{fId})}" th:text="${selectFood.fId}"></a><!-- （"~"+ 路径）：类Linux 路径-> 服务器根路径-->
+    <p th:text="|*{fId} 对应于 *{fName}|+*{Fry}+'分隔开的汉字'+(2014+222)"></p>
+    <div th:with="isEven=(*{fId} % 2 == 0)">111</div>
+    <p th:text="*{Fry}?_">不明确</p>
+    <p th:text="'生产日期是：'+*{{productTime}}">2016-2-1</p>
 </div>
 </body>
 </html>
