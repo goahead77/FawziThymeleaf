@@ -20,8 +20,16 @@
 </div>
 <script th:inline="javascript">
     var foodName=/*[[${selectFood}]]*/ '洞子火锅';
+    /*[+
+    var selectedFood='当前选择的食物是：'+[[${selectFood.fName}]];
+     $('#fName').on('dblclick',function () {
+     alert(selectedFood);
+     });
+     +]*/
 
-
+    /*[-
+     var displayNone='当前选择的食物是：'+[[${selectFood.fName}]];
+     -]*/
 
     $('#fName').on('click',function () {
         alert(foodName);

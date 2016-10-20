@@ -1,8 +1,10 @@
 package cn.fawzi.thymeleaf.config;
 
+import cn.fawzi.thymeleaf.dialect.FawziDialect;
 import cn.fawzi.thymeleaf.formatter.DateFormatter;
 import cn.fawzi.thymeleaf.formatter.FoodsFormatter;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -22,9 +24,15 @@ import org.thymeleaf.templatemode.TemplateMode;
  * @author wenqi
  */
 
+@SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware{
+
+
+    @Autowired
+    private FawziDialect fawziDialect;
+
 
     public MvcConfig() {
         super();
@@ -54,6 +62,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.setEnableSpringELCompiler(true);
+        templateEngine.addDialect(fawziDialect);
         return templateEngine;
     }
 

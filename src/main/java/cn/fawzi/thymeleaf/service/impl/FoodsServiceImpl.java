@@ -1,5 +1,6 @@
 package cn.fawzi.thymeleaf.service.impl;
 
+import cn.fawzi.thymeleaf.entity.FoodInfo;
 import cn.fawzi.thymeleaf.entity.Foods;
 import cn.fawzi.thymeleaf.service.FoodsService;
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author wenqi
@@ -14,6 +16,8 @@ import java.util.List;
 
 @Service
 public class FoodsServiceImpl implements FoodsService {
+
+    private static final Random random=new Random();
 
     @Override
     public Foods findById(Integer id) {
@@ -25,6 +29,10 @@ public class FoodsServiceImpl implements FoodsService {
         else
             foods.setFry(false);
         foods.setProductTime(new Date());
+        int num=random.nextInt();
+        double price=random.nextDouble();
+        FoodInfo foodInfo=new FoodInfo(price,num);
+        foods.setFoodInfo(foodInfo);
         return foods;
     }
     @Override
@@ -39,6 +47,10 @@ public class FoodsServiceImpl implements FoodsService {
             else
                 f.setFry(false);
             f.setProductTime(new Date());
+            int num=random.nextInt();
+            double price=random.nextDouble();
+            FoodInfo foodInfo=new FoodInfo(price,num);
+            f.setFoodInfo(foodInfo);
             foodses.add(f);
         }
         return foodses;

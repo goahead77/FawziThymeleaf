@@ -21,6 +21,7 @@ Thymeleaf测试页面
         <li th:each="food,index:${foods}" th:class="${index.odd}?'odd'"><span th:text="${food.fName}">
         </span><span th:text="${food.Fry}?'油炸':'非油炸'"></span>&nbsp;<a href="test.html"
                                                                       th:href="@{/food/foodDetail(fid=${food.fId})}">详情</a>
+            <!--<span th:text="${#aggregates.sum(food.foodInfo.{price*number})}"></span>-->
         </li>
         <li th:remove="all">饺子</li>
         <li th:remove="all">包子</li>

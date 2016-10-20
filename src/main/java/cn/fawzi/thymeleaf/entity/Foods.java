@@ -37,4 +37,6 @@ public class Foods {
 
     private Date productTime;
 
+    private FoodInfo foodInfo;
+
 }
