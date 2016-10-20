@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--suppress ThymeleafVariablesResolveInspection -->
-<html xmlns:th=http://www.thymeleaf.org>
+<html xmlns:th=http://www.thymeleaf.org xmlns:fz="http://www.fawzi.cn">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Thymeleaf</title>
@@ -85,5 +85,8 @@ Thymeleaf测试页面
         -[# th:text=${food.fName} /]
     [/]
 </div>
+
+<em>自定义方言</em>
+<a href="test.html" fz:href="@{/a/b}">自定义方言</a>
 </body>
 </html>

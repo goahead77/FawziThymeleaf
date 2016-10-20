@@ -1,5 +1,6 @@
 package cn.fawzi.thymeleaf.dialect;
 
+import cn.fawzi.thymeleaf.service.FawziPathService;
 import org.thymeleaf.templatemode.TemplateMode;
 
 /**
@@ -7,8 +8,8 @@ import org.thymeleaf.templatemode.TemplateMode;
  */
 public class HrefTagProcessor extends AbstractLinkProcessor  {
 
-    public HrefTagProcessor(String dialectPrefix){
-        super(TemplateMode.HTML, dialectPrefix, TAG_NAME);
+    public HrefTagProcessor(FawziPathService fawziPathService,String dialectPrefix){
+        super(TemplateMode.HTML, dialectPrefix, TAG_NAME,fawziPathService);
     }
     private final static String TAG_NAME = "href";
 }

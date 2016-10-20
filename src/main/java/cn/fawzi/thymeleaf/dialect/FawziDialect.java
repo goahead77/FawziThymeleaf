@@ -1,5 +1,8 @@
 package cn.fawzi.thymeleaf.dialect;
 
+import cn.fawzi.thymeleaf.service.FawziPathService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.thymeleaf.dialect.AbstractProcessorDialect;
 import org.thymeleaf.processor.IProcessor;
 import org.thymeleaf.standard.processor.StandardXmlNsTagProcessor;
@@ -11,7 +14,12 @@ import java.util.Set;
 /**
  * @author wenqi
  */
+
+@Component
 public class FawziDialect extends AbstractProcessorDialect{
+
+    @Autowired
+    private FawziPathService fawziPathService;
 
 
     protected FawziDialect() {
@@ -21,7 +29,7 @@ public class FawziDialect extends AbstractProcessorDialect{
     @Override
     public Set<IProcessor> getProcessors(String dialectPrefix) {
         HashSet<IProcessor> processors = new HashSet<>();
-        processors.add(new HrefTagProcessor(dialectPrefix));
+        processors.add(new HrefTagProcessor(fawziPathService,dialectPrefix));
         processors.add(new StandardXmlNsTagProcessor(TemplateMode.HTML, dialectPrefix));
         return processors;
     }

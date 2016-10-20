@@ -1,5 +1,7 @@
 package cn.fawzi.thymeleaf.dialect;
 
+import cn.fawzi.thymeleaf.service.FawziPathService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.thymeleaf.context.ITemplateContext;
 import org.thymeleaf.engine.*;
 import org.thymeleaf.model.IProcessableElementTag;
@@ -20,10 +22,12 @@ public class AbstractLinkProcessor extends AbstractAttributeTagProcessor impleme
 
     private final String attributeName;
     private AttributeDefinition targetAttributeDefinition;
+    private FawziPathService fawziPathService;
 
-    public AbstractLinkProcessor(TemplateMode templateMode, String dialectPrefix, String attributeName) {
+    public AbstractLinkProcessor(TemplateMode templateMode, String dialectPrefix, String attributeName,FawziPathService fawziPathService) {
         super(templateMode, dialectPrefix, null, false, attributeName, true, 1000, true);
         this.attributeName=attributeName;
+        this.fawziPathService=fawziPathService;
     }
 
 
@@ -66,7 +70,7 @@ public class AbstractLinkProcessor extends AbstractAttributeTagProcessor impleme
 
         targetLink = HtmlEscape.escapeHtml4Xml(targetLink);
         try {
-            targetLink = "这是处理后的地址："+targetLink;
+            targetLink = fawziPathService.getPath()+targetLink;
             StandardProcessorUtils.replaceAttribute(
                     structureHandler, attributeName, this.targetAttributeDefinition, this.attributeName
                     , targetLink);
