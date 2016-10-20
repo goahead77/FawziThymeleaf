@@ -2,10 +2,11 @@
 <!--suppress ThymeleafVariablesResolveInspection -->
 <html xmlns:th=http://www.thymeleaf.org>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Thymeleaf</title>
     <link rel="stylesheet" type="text/css" media="all"
-          href="../css/font.css" data-th-href="@{/css/font.css}" />
+          href="../css/font.css" data-th-href="@{/css/font.css}"/>
+    <script src="../js/test.js" th:src="@{/js/test.js}" th:inline="text"></script>
 </head>
 <body>
 Thymeleaf测试页面
@@ -14,24 +15,38 @@ Thymeleaf测试页面
     value的值
 </p>
 <!--/*  */-->
-<div  th:unless="${#lists.isEmpty(foods)}" class="bold">
+<em>Style 1:</em>
+<div th:unless="${#lists.isEmpty(foods)}" class="bold">
     <ul>
         <li th:each="food,index:${foods}" th:class="${index.odd}?'odd'"><span th:text="${food.fName}">
-        </span><span th:text="${food.Fry}?'油炸':'非油炸'"></span>&nbsp;<a href="test.html" th:href="@{/food/foodDetail(fid=${food.fId})}">详情</a>
+        </span><span th:text="${food.Fry}?'油炸':'非油炸'"></span>&nbsp;<a href="test.html"
+                                                                      th:href="@{/food/foodDetail(fid=${food.fId})}">详情</a>
         </li>
         <li th:remove="all">饺子</li>
         <li th:remove="all">包子</li>
         <li th:remove="all">馒头</li>
     </ul>
 </div>
+<em>Style 2:</em>
+<div>
+    <ul>
+        <!--/*/ <th:block th:each="food:${foods}"> /*/-->
+        <li th:text="${food.fName}"></li>
+        <li th:remove="all">饺子</li>
+        <li th:remove="all">包子</li>
+        <li th:remove="all">馒头</li>
+        <!--/*/ </th:block> /*/-->
+    </ul>
+</div>
 
-<hr />
+
+<hr/>
 <p th:text="#{home.welcome(${session.user})}">适配本国 问候语</p><!--在message中，用占位符{0[...n]}表示-->
 <p th:utext="#{${home_welcome}(${sex})}"></p><!-- message 可以是从内置对象中取得的 -->
 <hr/>
 <p th:text="${#request.getAttribute('sex')}"></p>
 <p th:text="${#calendars.format(calendar,'yyyy-MM-dd')}"></p>
-<hr />
+<hr/>
 <div th:object="${selectFood}">
     <p th:text="*{fId}">1111</p>
     <p th:text="*{fName}">洞子火锅</p>
@@ -45,7 +60,7 @@ Thymeleaf测试页面
 </div>
 <div th:include="~{footer :: #thank}"></div>
 <!--<div th:with="frag=~{footer :: #main/text()}">-->
-    <!--<p th:insert="${frag}">-->
+<!--<p th:insert="${frag}">-->
 <!--</div>-->
 <div th:fragment="test">
     Test fragment
@@ -57,5 +72,17 @@ Thymeleaf测试页面
 <!--/*/
 <div th:text="${selectFood.fName}"></div>
 /*/-->
+
+<em>Inline Expression:</em>
+<div>
+    <p>[[${html}]]    - 两个方括号：相当于th:text 浏览器不解析 拿到服务器原样数据</p>
+    <p>[(${html})]    - 外边方括号，里边圆括号 相当于th:utext 浏览器解析掉了 </p>
+</div>
+<em>TEXT template:</em>
+<div th:inline="text">
+    [# th:each="food:${foods}"]
+        -[# th:text=${food.fName} /]
+    [/]
+</div>
 </body>
 </html>

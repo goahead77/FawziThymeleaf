@@ -39,6 +39,8 @@ public class TestController {
         request.setAttribute("address",address);
         request.setAttribute("time",new Date());
         request.setAttribute("calendar",calendar);
+        String html="<p>你好<b>Fawzi!</b></p>";
+        request.setAttribute("html",html);
         return "test";
     }
 }

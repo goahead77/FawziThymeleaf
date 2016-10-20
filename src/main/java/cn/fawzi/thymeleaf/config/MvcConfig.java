@@ -45,7 +45,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         templateResolver.setSuffix(".html");
         templateResolver.setCharacterEncoding("UTF-8");
         templateResolver.setTemplateMode(TemplateMode.HTML);
-        templateResolver.setCacheable(true);
+        templateResolver.setCacheable(false);
         return templateResolver;
     }
 
@@ -63,7 +63,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setContentType("text/html; charset=UTF-8");
         viewResolver.setOrder(1);
-        viewResolver.setCache(false);
 //        viewResolver.setViewNames(new String[] {".html", ".xhtml","test.*"});
         return viewResolver;
     }
@@ -75,7 +74,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         super.addResourceHandlers(registry);
         registry.addResourceHandler("/images/**").addResourceLocations("/images/");
         registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
-        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+        registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/js/");
     }
 
     @Bean
