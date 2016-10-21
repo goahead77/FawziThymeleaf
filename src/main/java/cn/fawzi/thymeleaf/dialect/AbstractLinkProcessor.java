@@ -1,7 +1,6 @@
 package cn.fawzi.thymeleaf.dialect;
 
 import cn.fawzi.thymeleaf.service.FawziPathService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.thymeleaf.context.ITemplateContext;
 import org.thymeleaf.engine.*;
 import org.thymeleaf.model.IProcessableElementTag;
@@ -75,7 +74,7 @@ public class AbstractLinkProcessor extends AbstractAttributeTagProcessor impleme
                     structureHandler, attributeName, this.targetAttributeDefinition, this.attributeName
                     , targetLink);
         } catch (Exception e) {
-            throw new IllegalStateException("please use this tag in EWP pages.");
+            throw new IllegalStateException("please use this tag in fz pages.");
         }
 
     }
