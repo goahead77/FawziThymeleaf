@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html xmlns:th=http://www.thymeleaf.org>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr th:each="emotion:${emotions}">
+        <td th:text="${emotion.phrase}"></td><td><img src="test.html" th:src="${emotion.url}" /></td>
+        <td th:text="${emotion.category}"></td><td><img src="test.html" th:src="${emotion.icon}" /></td>
+        <td th:text="${emotion.value}"></td>
+    </tr>
+</table>
+</body>
+</html>
