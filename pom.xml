@@ -13,6 +13,8 @@
         <jackson.version>2.7.4</jackson.version>
     </properties>
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/aopalliance/aopalliance -->
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

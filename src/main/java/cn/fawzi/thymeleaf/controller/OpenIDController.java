@@ -17,6 +17,7 @@ public class OpenIDController {
     @RequestMapping("/get")
     @ResponseBody
     public String getOpenId(@OpenID String openId){
+        System.out.println("OpenID:"+openId);
         return openId;
     }
 

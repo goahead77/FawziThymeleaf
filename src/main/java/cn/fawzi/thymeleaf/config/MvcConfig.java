@@ -3,6 +3,8 @@ package cn.fawzi.thymeleaf.config;
 import cn.fawzi.thymeleaf.dialect.FawziDialect;
 import cn.fawzi.thymeleaf.formatter.DateFormatter;
 import cn.fawzi.thymeleaf.formatter.FoodsFormatter;
+import cn.fawzi.thymeleaf.resolver.AttributeArgumentResolver;
+import cn.fawzi.thymeleaf.resolver.OpenIDMethodArgumentResolver;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -12,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -20,6 +23,8 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
+
+import java.util.List;
 
 /**
  * @author wenqi
@@ -119,5 +124,11 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         CommonsMultipartResolver multipartResolver=new CommonsMultipartResolver();
         multipartResolver.setMaxInMemorySize(10*1024*1024);
         return multipartResolver;
+    }
+
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+        super.addArgumentResolvers(argumentResolvers);
+        argumentResolvers.add(new OpenIDMethodArgumentResolver());
     }
 }

@@ -15,8 +15,8 @@ import java.lang.reflect.Method;
 /**
  * @author wenqi
  */
-@Component
-@Aspect
+//@Component
+//@Aspect
 public class OpenIDAop {
 
     @Autowired
