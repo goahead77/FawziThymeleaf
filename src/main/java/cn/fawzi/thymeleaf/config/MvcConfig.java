@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -27,6 +28,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
 @EnableWebMvc
+@EnableAspectJAutoProxy
 public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware{
 
 
