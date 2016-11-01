@@ -2,6 +2,7 @@ package cn.fawzi.thymeleaf.resolver;
 
 import cn.fawzi.thymeleaf.annotation.OpenID;
 import org.springframework.core.MethodParameter;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -12,10 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author wenqi
  */
+@Component
 public class OpenIDMethodArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.getParameterAnnotation(OpenID.class)!=null;
+        return parameter.getParameterType()==String.class && parameter.hasMethodAnnotation(OpenID.class);
     }
 
     @Override

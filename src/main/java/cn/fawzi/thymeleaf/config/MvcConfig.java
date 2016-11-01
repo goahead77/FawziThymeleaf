@@ -130,5 +130,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         super.addArgumentResolvers(argumentResolvers);
         argumentResolvers.add(new OpenIDMethodArgumentResolver());
+        argumentResolvers.add(new AttributeArgumentResolver());
     }
 }
