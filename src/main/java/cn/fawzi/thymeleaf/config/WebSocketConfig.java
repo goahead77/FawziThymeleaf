@@ -9,6 +9,7 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 /**
  *
  * from:https://github.com/spring-guides/gs-messaging-stomp-websocket/blob/master/complete/src/main/java/hello/WebSocketConfig.java
+ * http://spring.io/guides/gs/messaging-stomp-websocket/
  * @author wenqi
  */
 
