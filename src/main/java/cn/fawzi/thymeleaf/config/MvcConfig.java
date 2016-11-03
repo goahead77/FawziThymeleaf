@@ -91,6 +91,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         registry.addResourceHandler("/images/**").addResourceLocations("/images/");
         registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
         registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/js/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
     @Bean
