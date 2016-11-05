@@ -5,6 +5,7 @@ import cn.fawzi.thymeleaf.entity.Message;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * @author wenqi
@@ -14,10 +15,14 @@ import org.springframework.stereotype.Controller;
 public class MessageController {
 
     @MessageMapping("/hello")
-    @SendTo("/topic/greetings")
+    @SendTo("/response/greetings")
     public Greeting greeting(Message message) throws Exception {
-        Thread.sleep(1000); // simulated delay
-        return new Greeting("欢迎 , " + message.getName() + "!");
+
+        String content=message.getContent();
+
+        String baidu="<a href='http://www.baidu.com/s?wd="+content+"'>点击链接</a>";
+
+        return new Greeting(baidu);
     }
 
 }
