@@ -11,6 +11,7 @@
         <thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
         <spring.version>4.3.3.RELEASE</spring.version>
         <jackson.version>2.7.4</jackson.version>
+        <slf4j.version>1.7.6</slf4j.version>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/aopalliance/aopalliance -->
@@ -20,7 +21,23 @@
             <artifactId>webjars-locator</artifactId>
             <version>0.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>sockjs-client</artifactId>
