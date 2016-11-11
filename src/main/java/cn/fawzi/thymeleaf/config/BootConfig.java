@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @ComponentScan("cn.fawzi.thymeleaf")
-@Import({MvcConfig.class})
+@Import({MvcConfig.class,LdapConfig.class})
 public class BootConfig {
 
 }
