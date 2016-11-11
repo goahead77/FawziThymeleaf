@@ -20,8 +20,8 @@ public class WebSocketConfig  extends AbstractWebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         super.configureMessageBroker(registry);
-        registry.enableSimpleBroker("/topic");
-        registry.setApplicationDestinationPrefixes("/app");
+        registry.enableSimpleBroker("/response");
+        registry.setApplicationDestinationPrefixes("/request");
     }
 
     @Override
