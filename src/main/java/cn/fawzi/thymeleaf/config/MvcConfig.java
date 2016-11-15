@@ -3,6 +3,7 @@ package cn.fawzi.thymeleaf.config;
 import cn.fawzi.thymeleaf.dialect.FawziDialect;
 import cn.fawzi.thymeleaf.formatter.DateFormatter;
 import cn.fawzi.thymeleaf.formatter.FoodsFormatter;
+import cn.fawzi.thymeleaf.interceptor.AndroidInterceptor;
 import cn.fawzi.thymeleaf.resolver.AttributeArgumentResolver;
 import cn.fawzi.thymeleaf.resolver.OpenIDMethodArgumentResolver;
 import org.springframework.beans.BeansException;
@@ -17,6 +18,7 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -132,5 +134,11 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         super.addArgumentResolvers(argumentResolvers);
         argumentResolvers.add(new OpenIDMethodArgumentResolver());
         argumentResolvers.add(new AttributeArgumentResolver());
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        super.addInterceptors(registry);
+        registry.addInterceptor(new AndroidInterceptor());
     }
 }
