@@ -54,4 +54,15 @@ public class MD5Util {
     public static String md52String(String s){
         return convertMD5(convertMD5(s));
     }
+
+    public static void main(String[] args) {
+        String a=md52String("1111");
+        String x=string2MD5(a);
+        System.out.println(x);
+        String b=convertMD5(x);
+
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(convertMD5(x));
+    }
 }
