@@ -4,7 +4,6 @@ import cn.fawzi.thymeleaf.Utils.MD5Util;
 import cn.fawzi.thymeleaf.controller.ApiResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
