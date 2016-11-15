@@ -12,7 +12,7 @@ public class MD5Util {
     public static String string2MD5(String inStr){
         MessageDigest md5 = null;
         try{
-            md5 = MessageDigest.getInstance("Fawzi77");
+            md5 = MessageDigest.getInstance("MD5");
         }catch (Exception e){
             System.out.println(e.toString());
             e.printStackTrace();
