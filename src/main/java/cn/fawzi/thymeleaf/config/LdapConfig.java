@@ -10,7 +10,6 @@ import org.springframework.context.annotation.ImportResource;
  */
 
 @Configuration
-@ImportResource("classpath:ldap-config.xml")
 public class LdapConfig{
 
 }
