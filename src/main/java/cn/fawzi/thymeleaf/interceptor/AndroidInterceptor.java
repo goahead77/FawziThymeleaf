@@ -1,7 +1,7 @@
 package cn.fawzi.thymeleaf.interceptor;
 
-import cn.fawzi.thymeleaf.Utils.MD5Util;
 import cn.fawzi.thymeleaf.controller.ApiResult;
+import cn.fawzi.thymeleaf.utils.DES;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -21,7 +21,7 @@ public class AndroidInterceptor implements HandlerInterceptor {
         if(request.getServletPath().startsWith("/android")){
             try{
                 String authority= request.getHeader("user-authority");
-                String md5Msg=MD5Util.md52String(authority);
+                String md5Msg= DES.decryptDES(authority);
                 if(!md5Msg.split(",")[1].equals("fawzi77")){
                     String result= objectMapper.writeValueAsString(new ApiResult(500,"非法请求",null));
                     response.getWriter().write(result);
